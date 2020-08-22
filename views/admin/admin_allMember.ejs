@@ -1,0 +1,33 @@
+<%- include ('../partials/header') %> 
+<body class="bg-dark text-white">
+    <div class="side-bar">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="/admin/dashboard" class="nav-link">Home</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/add" class="nav-link">Add Member</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/logout" class="nav-link">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="view_members">
+        <h1 class="heading font-weight-bolder text-uppercase text-primary admin-l">admin dashboard</h1>
+        <%- include ('../partials/error_msg') %>
+        <h2 class="heading text-uppercase text-center">List of all Members</h2><br/>
+        <ul class="list-group">
+            <% for(let i = 0; i < member.length; i++) { %>
+                <li class="list-group-item">
+                    <h4>
+                        <a href="/admin/member/<%=member[i].username%>" class=""><%=member[i].userProfile.lastName%> <%=member[i].userProfile.firstName%></a>
+                    </h4>
+                    <p class="text-dark">@<%=member[i].username%></p>
+                    <p class="text-dark">Registered on: <%=member[i].createdAt%></p>
+                    <p class="text-dark">Last updated on: <%=member[i].updatedAt%></p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+<%- include ('../partials/footer') %> 

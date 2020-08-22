@@ -1,0 +1,23 @@
+<%- include ('../partials/header') %> 
+<body class="bg-dark text-white">
+    <div class="side-bar">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="/admin/dashboard" class="nav-link text-uppercase">Home</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/all_member" class="nav-link">View Members</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/add" class="nav-link">Add new member</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/logout" class="nav-link">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <h1 class="heading">Welcome to your Dashboard</h1>
+        <h4 class="lead">You have total Number of <strong><%=member.length - 1 %></strong> Registered Member</h4>
+    </div>
+<%- include ('../partials/footer') %> 

@@ -1,0 +1,38 @@
+<%- include ('../partials/header') %>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3">
+                  <i class="fa fa-user-circle fa-5x text-white-50"></i><a class="navbar-brand text-uppercase font-weight-bolder p-2" href="/member/dashboard">login system app</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link" href="/member/dashboard">Home</a>
+                        <a class="nav-item nav-link active" href="/member/view_profile">Profile<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/member/all_member">View other members</a>
+                        <a class="nav-item nav-link" href="/member/logout">Logout</a>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+
+        <div class="col-12 w-50 m-auto">
+            <h2 class="text-center">Update Profile</h2>
+            <form action="/member/edit/" method="POST" class="form-group">
+                <input type="text" name="firstname" class="form-control" placeholder="First Name" value="<%=firstname%>"required><br/>
+                <input type="text" name="lastname" class="form-control" placeholder="Last Name" value="<%=lastname%>" required><br/>
+                <input type="text" name="occupation" class="form-control" placeholder="Occupation" value="<%=occupation%>" required><br/>
+                <input type="date" name="date" class="form-control" placeholder="Date of Birth" value="<%=dob%>" required><br/>
+                <select name="gender" id="gender" class="form-control" required>
+                    <option value="Male" class="form-control">Male</option>
+                    <option value="Female" class="form-control">Female</option>
+                </select> <br>
+                <textarea name="bio" id="bio" cols="30" rows="10" class="form-text form-control form-field" placeholder="About me"><%=bio%></textarea><br>
+                <button class="btn btn-success w-100 text-uppercase" type="submit">Update</button>
+            </form>
+        </div>
+<%- include ('../partials/footer') %>

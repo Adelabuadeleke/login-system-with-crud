@@ -1,0 +1,49 @@
+<%- include ('../partials/header') %> 
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3">
+                  <i class="fa fa-user-circle fa-5x text-white-50"></i><a class="navbar-brand text-uppercase font-weight-bolder p-2" href="/member/dashboard">login system app</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link" href="/member/dashboard">Home</a>
+                        <a class="nav-item nav-link" href="/member/view_profile">Profile</a>
+                        <a class="nav-item nav-link active" href="/member/all_member">View other members<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/member/logout">Logout</a>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+            <div class="col-12 mt-4 p-3">
+                <table class="table table-success mt-2 table-hover table-responsive-md">
+                    <thead class="thead-dark text-center">
+                      <th>S/No</th>
+                      <th>Full Name</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Gender</th>
+                      <th>Occupation</th>
+                      <th>Date of Birth</th>
+                    </thead>
+                    <tbody>
+                      <% for( let i = 0;  i < member.length; i++ ) { %>
+                          <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= member[i].userProfile.firstName %> <%= member[i].userProfile.lastName %></td>
+                            <td><%= member[i].username %></td>
+                            <td><%= member[i].email %></td>
+                            <td><%= member[i].userProfile.gender %></td>
+                            <td><%= member[i].userProfile.occupation %></td>
+                            <td><%= member[i].userProfile.dob %></td>
+                          </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+            </div> 
+        </div>
+    
+<%- include ('../partials/footer') %> 

@@ -1,0 +1,71 @@
+<%- include ('../partials/header') %>
+<body class="bg-dark text-white">
+    <div class="side-bar">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="/admin/dashboard" class="nav-link">Home</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/all_member" class="nav-link">View Members</a>
+            </li>
+            <li class="list-group-item">
+                <a href="/admin/logout" class="nav-link">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="edit_member ">
+        <h1 class="heading font-weight-bolder text-uppercase text-primary">admin dashboard</h1>
+        <h2 class="heading text-uppercase text-center">Edit Member</h2><br/>
+        <%- include ('../partials/error_msg') %>
+        <form action="/admin/edit/<%=member.username %>" method="POST" class="">
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="email" class="">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<%=member.email %>" required readonly>
+                </div>
+                <div class="col-6">
+                    <label for="username">Username:</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                      </div>
+                      <input type="text" class="form-control" id="username" name="username" value="<%=member.username %>" required>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="firstname" class="">First Name:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="<%=member.userProfile.firstName %>" required>
+                </div>
+                <div class="col-6">
+                    <label for="lastname" class="">Last Name:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="<%=member.userProfile.lastName%>" required>
+                </div>
+                <div class="col-6">
+                    <label for="occupation" class="">Occupation:</label>
+                    <input type="text" class="form-control" id="occupation" name="occupation" value="<%=member.userProfile.occupation %>" required>
+                </div>
+                <div class="col-6">
+                    <label for="date" class="">Date of Birth:</label>
+                    <input type="date" class="form-control" id="date" name="date" value="<%=member.userProfile.dob %>" required>
+                </div>
+                <div class="col-6">
+                    <label for="bio" class="">Bio:</label>
+                    <textarea name="bio" id="bio" cols="10" rows="10" class="form-control" required><%=member.userProfile.bio %></textarea>
+                </div>
+                <div class="col-6">
+                    <label for="gender" class="">Gender:</label>
+                    <select name="gender" id="gender" class="form-control" required>
+                        <option value="Male" class="form-control">Male</option>
+                        <option value="Female" class="form-control">Female</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-success text-uppercase" type="submit">Edit Member</button>
+        </form>
+        <br>
+        <form action="/admin/delete/<%=member.username %>" class="form-group" method="POST">
+            <button type="submit" class="btn btn-danger text-uppercase"  onclick="return confirm('Are you sure you want to delete <%=member.username %>?')">Delete Member</button>
+        </form>
+    </div>
+<%- include ('../partials/footer') %>

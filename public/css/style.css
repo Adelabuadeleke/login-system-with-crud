@@ -1,0 +1,33 @@
+.side-bar {
+    height:100%;
+    width:15%;
+    position:fixed;
+    top:0px;
+    left:0;
+    background-color:#ffffff;
+    padding-top:60px;
+}
+
+.main{
+    margin-left: 18%;
+    margin-top: 15%;
+    padding: 10px;
+}
+
+.view_members {
+    width: 50%;
+    margin-left: 27%;
+    margin-top: 5%;
+    padding: 10px;
+    
+}
+
+.edit_member {
+    margin-left: 16%;
+    margin-top: 5%;
+    padding: 10px;
+}
+
+.admin-l {
+    margin-left: -10rem;
+}

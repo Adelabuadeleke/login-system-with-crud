@@ -1,0 +1,25 @@
+<%- include ('../partials/header') %> 
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3">
+                  <i class="fa fa-user-circle fa-5x text-white-50"></i><a class="navbar-brand text-uppercase font-weight-bolder p-2" href="/member/dashboard">login system app</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link active" href="/member/dashboard">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/member/view_profile">Profile</a>
+                        <a class="nav-item nav-link" href="/member/all_member">View other members</a>
+                        <a class="nav-item nav-link" href="/member/logout">Logout</a>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+            <div class="col-12 mt-4 p-3">
+                <h3 class="text-justify">Welcome precious member with username:  <a href="/member/view_profile" class="card-link text-dark">@<%=loggedUser%> </a></h3>
+            </div> 
+        </div>
+<%- include ('../partials/footer') %> 

@@ -1,0 +1,36 @@
+<%- include ('../partials/header') %> 
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3">
+                  <i class="fa fa-user-circle fa-5x text-white-50"></i><a class="navbar-brand text-uppercase font-weight-bolder p-2" href="/member/dashboard">login system app</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link" href="/member/dashboard">Home</a>
+                        <a class="nav-item nav-link active" href="/member/view_profile">Profile<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/member/all_member">View other members</a>
+                        <a class="nav-item nav-link" href="/member/logout">Logout</a>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+            <div class="col-12 mt-4">
+              <%- include ('../partials/error_msg') %> 
+                <h1 class="mb-0">Hi, I am <%= firstname%> <%= lastname%></h1>
+                <h4 class="mb-0">@<%=loggedUser%></h4>
+                <div class="mb-5">
+                  <p class="lead mb-3"><%=gender%></p>
+                  <p class="lead mb-3"><%=occupation%></p>
+                  <h5 class="lead">About me:</h5>
+                  <p class="w-50 text-justify"><%=bio%></p>
+                </div>
+                <a href="/member/edit_profile" class="nav-link btn btn-primary w-25 ml-5">Edit Profile</a> <br>
+                <form action="/member/delete" class="form-group" method="POST">
+                  <button type="submit" class="btn btn-danger text-uppercase nav-link w-25 ml-5"  onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</button>
+                </form>
+            </div>
+<%- include ('../partials/footer') %> 
