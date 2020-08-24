@@ -1,6 +1,13 @@
 //Require mongoose
 const mongoose = require('mongoose');
-let mongoURI =  'mongodb://localhost:27017/loginApp';
+let mongoURI =  process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/loginApp';
+
+/*
+process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/HelloMongoose';
+*/
+
 
 //Function to open DB connection
 let openDB = function () {
