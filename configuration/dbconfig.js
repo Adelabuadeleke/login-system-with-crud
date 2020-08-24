@@ -1,10 +1,11 @@
 //Require mongoose
 const mongoose = require('mongoose');
+let mongoURI =  'mongodb://localhost:27017/loginApp';
 
 //Function to open DB connection
 let openDB = function () {
     //Create DB connection with Mongo
-    mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+    mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
     //Check Connection
     let db = mongoose.connection;

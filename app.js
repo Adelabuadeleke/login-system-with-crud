@@ -1,6 +1,6 @@
 //Dependencies
 const express = require('express');
-const dotenv = require('dotenv');
+//const dotenv = require('dotenv');
 const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -11,7 +11,7 @@ const startDB = require('./configuration/dbconfig');
 const app = express();
 
 //Import env file use port number from env
-dotenv.config({path: './configuration/config.env'});
+//dotenv.config({path: './configuration/config.env'});
 let PORT = process.env.PORT || 2000;
 
 //Call DB
@@ -66,5 +66,5 @@ app.use('/admin', adminRoutes);
 
 
 app.listen(PORT, ()=> {
-    console.log(`Application is running in ${process.env.NODE_ENV} mode on port: ${PORT} mongoURI: ${process.env.mongoURI}`);
+    console.log(`Application is running in ${process.env.NODE_ENV} mode on port: ${PORT}`);
 })
