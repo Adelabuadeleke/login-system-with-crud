@@ -1,6 +1,6 @@
 //Require mongoose
 const mongoose = require('mongoose');
-let mongoURI =  process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/loginApp';
+let mongoURI =  'mongodb://sympleKay:michael1995@ds163517.mlab.com:63517/heroku_qvrxwsvj';
 
 /*
 process.env.MONGOLAB_URI ||
