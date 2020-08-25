@@ -1,6 +1,6 @@
 //Require mongoose
 const mongoose = require('mongoose');
-let mongoURI = 'mongodb://sympleKay:michael1995@ds163517.mlab.com:63517/heroku_qvrxwsvj';
+let mongoURI = '';
 
 /*
 process.env.MONGOLAB_URI ||
