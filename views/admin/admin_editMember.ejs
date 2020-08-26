@@ -61,11 +61,7 @@
                 </div>
             </div>
             <br>
-            <button class="btn btn-success text-uppercase" type="submit">Edit Member</button>
-        </form>
-        <br>
-        <form action="/admin/delete/<%=member.username %>" class="form-group" method="POST">
-            <button type="submit" class="btn btn-danger text-uppercase"  onclick="return confirm('Are you sure you want to delete <%=member.username %>?')">Delete Member</button>
+            <button class="btn btn-primary text-uppercase" type="submit">Update Member</button>
         </form>
     </div>
 <%- include ('../partials/footer') %>

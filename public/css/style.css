@@ -15,8 +15,8 @@
 }
 
 .view_members {
-    width: 50%;
-    margin-left: 27%;
+    width: 80%;
+    margin-left: 18%;
     margin-top: 5%;
     padding: 10px;
     
@@ -28,6 +28,11 @@
     padding: 10px;
 }
 
-.admin-l {
-    margin-left: -10rem;
+.delete-btn {
+    border: 0px;
+    background-color: transparent;
+}
+
+.delete-form {
+    display: inline;
 }

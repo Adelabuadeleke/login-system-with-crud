@@ -17,17 +17,33 @@
         <h1 class="heading font-weight-bolder text-uppercase text-primary admin-l">admin dashboard</h1>
         <%- include ('../partials/error_msg') %>
         <h2 class="heading text-uppercase text-center">List of all Members</h2><br/>
-        <ul class="list-group">
-            <% for(let i = 0; i < member.length; i++) { %>
-                <li class="list-group-item">
-                    <h4>
-                        <a href="/admin/member/<%=member[i].username%>" class=""><%=member[i].userProfile.lastName%> <%=member[i].userProfile.firstName%></a>
-                    </h4>
-                    <p class="text-dark">@<%=member[i].username%></p>
-                    <p class="text-dark">Registered on: <%=member[i].createdAt%></p>
-                    <p class="text-dark">Last updated on: <%=member[i].updatedAt%></p>
-                </li>
-            <% } %>
-        </ul>
+        <table class="table bg-white table-hover table-responsive-md">
+            <thead class="thead-light text-center">
+              <th>S/No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Registered</th>
+              <th>Actions</th>
+            </thead>
+            <tbody>
+              <% for (let i = 0; i < member.length; i++) {%>
+                  <tr>
+                    
+                    <td class="text-dark"><%= i + 1 %></td>
+                    <td class="text-dark"><%= member[i].userProfile.firstName %> <%= member[i].userProfile.lastName %></td>
+                    <td class="text-dark"><%= member[i].email %></td>
+                    <td class="text-dark"><%= member[i].username %></td>
+                    <td class="text-dark" class="date"><%=moment(member[i].createdAt).format('DD MMM YYYY, h:mm a') %> </td>
+                    <td class="text-center"> 
+                      <a href="/admin/member/<%= member[i].username %>" class="" id="edit-link"><i class="fa fa-edit text-primary"></i></a>
+                      <form action="/admin/delete/<%= member[i].username %>" method="post" class="delete-form">
+                        <button class="delete-btn" onclick="return confirm('Are you sure you want to delete <%=member[i].username %>?')"><i class="fa fa-trash text-danger"></i></button>
+                      </form>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
     </div>
 <%- include ('../partials/footer') %> 

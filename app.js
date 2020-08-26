@@ -5,14 +5,15 @@ const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const moment = require('moment');
 const memberRoutes = require('./router/members');
 const adminRoutes = require('./router/admin');
 const startDB = require('./configuration/dbconfig');
 const app = express();
-
+moment().format();
 //Import env file use port number from env
 //dotenv.config({path: './configuration/config.env'});
-let PORT = process.env.PORT || 2000;
+let PORT = process.env.PORT || 3000;
 
 //Call DB
 startDB();

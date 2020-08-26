@@ -19,7 +19,8 @@
                   </nav>
             </div>
             <div class="col-12 mt-4 p-3">
-                <h3 class="text-justify">Welcome precious member with username:  <a href="/member/view_profile" class="card-link text-dark">@<%=loggedUser%> </a></h3>
+              <%- include ('../partials/error_msg') %> 
+                <h3 class="text-justify">Welcome member with username:  <a href="/member/view_profile" class="card-link text-dark">@<%=loggedUser%> </a></h3>
             </div> 
         </div>
 <%- include ('../partials/footer') %> 

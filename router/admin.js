@@ -2,9 +2,19 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
+const moment = require('moment');
 const Member = require('../model/member');
 const passport = require('passport');
 const {ensureAuth} = require('../configuration/ensureAdminAuth');
+
+moment().format();
+
+function adminAccess (req, res) {
+    if (req.user.email !== 'me@admin.com') {
+        req.flash('errorMsg', 'Access denied!');
+        res.redirect('/member/dashboard');
+    }
+};
 
 //Body Parser middleware
 let urlencoded = bodyParser.urlencoded( { extended: false } );
@@ -17,6 +27,7 @@ router.get('/login', (req, res) => {
 
 //Get Admin Dashboard
 router.get('/dashboard', ensureAuth, (req, res) => {
+    adminAccess (req, res);
     Member.find({}, (err, docs) => {
         if (err) {throw err};
         res.render('admin/admin_dashboard', {member: docs});
@@ -25,19 +36,22 @@ router.get('/dashboard', ensureAuth, (req, res) => {
 
 //Get All Member
 router.get('/all_member', ensureAuth, (req, res) => {
+    adminAccess (req, res);
     Member.find({}, (err, docs) => {
         if (err) {throw err};
-        res.render('admin/admin_allMember', {member: docs});
+        res.render('admin/admin_allMember', {member: docs, moment:moment});
     })
 })
 
 //Get add new member routes
 router.get('/add', (req, res) => {
+    adminAccess (req, res);
     res.render('admin/admin_addMember')
 })
 
 //Get one member to CRUD
 router.get('/member/:id', ensureAuth, (req, res) => {
+    adminAccess (req, res);
     const userId = req.params.id;
     Member.findOne({username: userId}, (err, docs) => {
         if (err) {throw err};
@@ -47,6 +61,7 @@ router.get('/member/:id', ensureAuth, (req, res) => {
 
 //Logout Admin
 router.get('/logout', ensureAuth, (req, res) => {
+    adminAccess (req, res);
     req.logOut();
     req.flash('successMsg', 'You are now logged out');
     res.redirect('/');
@@ -215,11 +230,12 @@ router.post('/edit/:id', urlencoded, (req, res) => {
 //Delete Users
 router.post('/delete/:id', (req, res) => {
     let usernameId = req.params.id;
-    //let confirmation = confirm(`Are you sure you want to delete ${usernameId}?`);
     Member.findOneAndDelete({username:usernameId}, (err, docs) => {
-        if (err) {throw err}
+        if (err) {
+            console.log (err);
+        } 
         req.flash('successMsg', 'Member deleted');
-        res.redirect('/admin/all_member')
+        res.redirect('/admin/all_member');
     })
 })
 
