@@ -84,6 +84,7 @@ router.post('/login', urlencoded, (req, res, next) => {
 
 //Create New Member
 router.post('/add',  urlencoded, (req, res) => {
+    adminAccess (req, res);
     const {username, email, password, firstname, lastname, occupation, date, bio, gender} = req.body;
     
     let errors = [];
@@ -168,6 +169,7 @@ router.post('/add',  urlencoded, (req, res) => {
 
 //Edit member infos
 router.post('/edit/:id', urlencoded, (req, res) => {
+    adminAccess (req, res);
     //Get form input
     const {firstname, lastname, email, username, occupation, date, bio, gender} = req.body;
     //Array to store errors
@@ -229,6 +231,7 @@ router.post('/edit/:id', urlencoded, (req, res) => {
 
 //Delete Users
 router.post('/delete/:id', (req, res) => {
+    adminAccess (req, res);
     let usernameId = req.params.id;
     Member.findOneAndDelete({username:usernameId}, (err, docs) => {
         if (err) {
